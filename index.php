@@ -71,20 +71,28 @@
           var bounds = this.map.getBounds();
 
           var html = [], visitCount = 0, placeCount = 0;
-          for (var i = 0; i < this.history.length; i++) {
+          
+          for(var i = 0; i < this.history.length; i++) {
             var entry = this.history[i]['venue'];
             
-            console.log(entry);
+            
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
-            if (bounds.contains(latLng) && this.categoryMatch(entry.categories)) {
+            
+            var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
+			  .bindPopup(entry['name'], { closeButton: false })
+			  .on('mouseover', function(e) { this.openPopup(); })
+			  .on('mouseout', function(e) { this.closePopup(); });
+			map.addLayer(marker);
+        
+            if(bounds.contains(latLng) && this.categoryMatch(entry.categories)) {
               placeCount++;
               visitCount += this.history[i].beenHere;
-              html.push('<a href="http://foursquare.com/venue/', entry['id'], '">', entry['name'],
-                        '</a> (' + this.history[i].beenHere + ' visits)<br>');
+              html.push('<a href="http://foursquare.com/venue/', entry['id'], '">', entry['name'], '</a> (' + this.history[i].beenHere + ' visits)<br>');
             }
+            
           }
-          var header = '<span class="count">' + visitCount + '</span> visits to <span class="count">' +
-                       placeCount + '</span> places<br/><br/>';
+          
+          var header = '<span class="count">' + visitCount + '</span> visits to <span class="count">' + placeCount + '</span> places<br/><br/>';
           $('#content').html(header + html.join(''));
           
         }
