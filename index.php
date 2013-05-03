@@ -89,7 +89,30 @@
           $('#content').html(header + html.join(''));
           
         }
+		
+		
+		/**
+         * Render mareker of places in specified category and map area with.
+         * @private
+         */
+        HistoryBrowse.prototype.markers = function() {
+          if (!this.history) { return }
+          
+          var bounds = this.map.getBounds();
 
+          for(var i = 0; i < this.history.length; i++) {
+            var entry = this.history[i]['venue'];
+            
+            var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
+			
+			var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
+			  .bindPopup(entry['name'], { closeButton: false })
+			  .on('mouseover', function(e) { this.openPopup(); })
+			  .on('mouseout', function(e) { this.closePopup(); });
+			this.map.addLayer(marker);
+          }
+        }
+        
         /**
          * Build up category select box from history.
          * @private
@@ -121,9 +144,7 @@
          */
         HistoryBrowse.prototype.onHistory = function(history) {
           this.history = history;
-          
-          console.log(history);
-          
+          this.markers();
           this.buildCategoryList();
           this.draw();
         }
