@@ -140,6 +140,6 @@
   
 </head>
 <body>
-  <div style="width: 100%; height: 100%;" id="map_canvas"></div>
+  <div style="width: 100%; height: 100%;" id="map"></div>
 </body>
 </html>  
