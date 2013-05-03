@@ -89,8 +89,20 @@
           iconAnchor: new L.Point(16, 41),
           popupAnchor: new L.Point(0, -51)
         });
-        var icon = new leafletIcon();
-        var marker = new L.Marker(latLng, {icon:icon})
+        
+        // var icon = new leafletIcon();
+        /*
+        L.marker([40, -75.00], {
+			icon: L.icon({
+				iconUrl: 'http://placekitten.com/50/50',
+				iconSize:     [50, 50], // size of the icon
+				iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+				popupAnchor:  [0, -25]  // point from which the popup should open relative to the iconAnchor
+			})
+		}).addTo(map);
+		*/
+		
+        var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
           .bindPopup(venues[i]['venue']['name'], { closeButton: false })
           .on('mouseover', function(e) { this.openPopup(); })
           .on('mouseout', function(e) { this.closePopup(); });
