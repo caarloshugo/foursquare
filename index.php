@@ -90,7 +90,7 @@
           popupAnchor: new L.Point(0, -51)
         });
         var icon = new leafletIcon();
-        var marker = new L.Marker(latLng, {icon: icon})
+        var marker = new L.Marker(latLng, {icon: icon: L.icon({ iconUrl: 'http://placekitten.com/50/50', iconSize: [50, 50], iconAnchor: [25, 25], popupAnchor: [0, -25] })})
           .bindPopup(venues[i]['venue']['name'], { closeButton: false })
           .on('mouseover', function(e) { this.openPopup(); })
           .on('mouseout', function(e) { this.closePopup(); });
