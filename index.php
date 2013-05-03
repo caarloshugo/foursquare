@@ -73,6 +73,8 @@
           var html = [], visitCount = 0, placeCount = 0;
           for (var i = 0; i < this.history.length; i++) {
             var entry = this.history[i]['venue'];
+            
+            conosle.log(entry);
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
             if (bounds.contains(latLng) && this.categoryMatch(entry.categories)) {
               placeCount++;
@@ -84,6 +86,7 @@
           var header = '<span class="count">' + visitCount + '</span> visits to <span class="count">' +
                        placeCount + '</span> places<br/><br/>';
           $('#content').html(header + html.join(''));
+          
         }
 
         /**
