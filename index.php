@@ -69,8 +69,8 @@
         HistoryBrowse.prototype.draw = function() {
           if (!this.history) { return }
           var bounds = this.map.getBounds();
-		  console.log(bounds);
-		console.log(this.map.getCenter());
+		 
+		console.log(this.map);
           var html = [], visitCount = 0, placeCount = 0;
           
           for(var i = 0; i < this.history.length; i++) {
