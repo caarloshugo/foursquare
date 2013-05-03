@@ -122,8 +122,9 @@
 					}
 				}]
 			};
-
+			
 			// Pass features and a custom factory function to the map
+			console.log(this.map.markerLayer);
 			this.map.markerLayer.setGeoJSON(geoJson);
 			
 			this.map.markerLayer.bindPopup(entry['name'], { closeButton: false });
