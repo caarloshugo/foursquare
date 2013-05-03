@@ -75,14 +75,7 @@
           for(var i = 0; i < this.history.length; i++) {
             var entry = this.history[i]['venue'];
             
-            
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
-            
-            var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
-			  .bindPopup(entry['name'], { closeButton: false })
-			  .on('mouseover', function(e) { this.openPopup(); })
-			  .on('mouseout', function(e) { this.closePopup(); });
-			this.map.addLayer(marker);
         
             if(bounds.contains(latLng) && this.categoryMatch(entry.categories)) {
               placeCount++;
@@ -128,6 +121,9 @@
          */
         HistoryBrowse.prototype.onHistory = function(history) {
           this.history = history;
+          
+          console.log(history);
+          
           this.buildCategoryList();
           this.draw();
         }
