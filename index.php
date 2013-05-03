@@ -100,37 +100,17 @@
           if (!this.history) { return }
           
           var bounds = this.map.getBounds();
-
+		  
           for(var i = 0; i < this.history.length; i++) {
             var entry = this.history[i]['venue'];
             
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
-			
-			var geoJson = {
-				type: 'FeatureCollection',
-				features: [{
-					type: 'Feature',
-					properties: {
-						title: entry['name'],
-						'marker-color': '#f00',
-						'marker-size': 'large',
-						url: 'http://twitter.com'
-					},
-					geometry: {
-						type: 'Point',
-						coordinates: latLng
-					}
-				}]
-			};
-			
-			// Pass features and a custom factory function to the map
-			console.log(this.map);
-			this.map.markerLayer.setGeoJSON(geoJson);
-			
-			this.map.markerLayer.bindPopup(entry['name'], { closeButton: false });
-			this.map.markerLayer.on('mouseover', function(e) { this.openPopup(); });
-			this.map.markerLayer.on('mouseout', function(e) { this.closePopup(); });
-			
+
+			var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
+			  .bindPopup(entry['name'], { closeButton: false })
+			  .on('mouseover', function(e) { this.openPopup(); })
+			  .on('mouseout', function(e) { this.closePopup(); });
+			this.map.addLayer(marker);
           }
         }
         
