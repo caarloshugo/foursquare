@@ -16,14 +16,6 @@
   <style type="text/css">
     html { height: 100%; }
     body { height: 100%; margin: 0; padding: 0; }
-    /* Give our markers a background image */
-    .leaflet-marker-icon {
-      background: url(https://foursquare.com/img/pin-blue-transparent.png);
-      padding: 6px;
-      padding-bottom: 17px;
-      top: -6px;
-      left: -6px;
-      }
   </style>
  
   <script type="text/javascript">
@@ -81,6 +73,7 @@
           venues[i]['venue']['location']['lat'],
           venues[i]['venue']['location']['lng']
         );
+        
         /* Build icon for each icon */
         var leafletIcon = L.Icon.extend({
           iconUrl: venues[i]['venue']['categories'][0]['icon'],
