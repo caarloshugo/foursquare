@@ -82,7 +82,7 @@
 			  .bindPopup(entry['name'], { closeButton: false })
 			  .on('mouseover', function(e) { this.openPopup(); })
 			  .on('mouseout', function(e) { this.closePopup(); });
-			map.addLayer(marker);
+			this.map.addLayer(marker);
         
             if(bounds.contains(latLng) && this.categoryMatch(entry.categories)) {
               placeCount++;
