@@ -106,13 +106,33 @@
             
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
 			
-			var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
-			  .bindPopup(entry['name'], { closeButton: false })
-			  .on('mouseover', function(e) { this.openPopup(); })
-			  .on('mouseout', function(e) { this.closePopup(); });
-			this.map.addLayer(marker);
+			var geoJson = {
+				type: 'FeatureCollection',
+				features: [{
+					type: 'Feature',
+					properties: {
+						title: entry['name'],
+						'marker-color': '#f00',
+						'marker-size': 'large',
+						url: 'http://twitter.com'
+					},
+					geometry: {
+						type: 'Point',
+						coordinates: latLng
+					}
+				}]
+			};
+
+			// Pass features and a custom factory function to the map
+			map.markerLayer.setGeoJSON(geoJson);
+			
+			map.markerLayer.bindPopup(entry['name'], { closeButton: false });
+			map.markerLayer.on('mouseover', function(e) { this.openPopup(); });
+			map.markerLayer.on('mouseout', function(e) { this.closePopup(); });
+			
           }
         }
+        
         
         /**
          * Build up category select box from history.
@@ -137,6 +157,7 @@
             this.draw();
           }, this));
         };
+
 
         /**
          * Given the response from a venue history request, build a list of all visited
