@@ -124,7 +124,7 @@
 			};
 			
 			// Pass features and a custom factory function to the map
-			console.log(this.map.markerLayer);
+			console.log(this.map);
 			this.map.markerLayer.setGeoJSON(geoJson);
 			
 			this.map.markerLayer.bindPopup(entry['name'], { closeButton: false });
