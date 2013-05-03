@@ -70,7 +70,6 @@
           if (!this.history) { return }
           var bounds = this.map.getBounds();
 		 
-		console.log(this.map);
           var html = [], visitCount = 0, placeCount = 0;
           
           for(var i = 0; i < this.history.length; i++) {
@@ -112,6 +111,8 @@
 			  .on('mouseout', function(e) { this.closePopup(); });
 			this.map.addLayer(marker);
           }
+          
+          this.map.setZoom(13);
         }
         
         
