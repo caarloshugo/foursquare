@@ -171,8 +171,6 @@
 <body>
 	<div id="map" style="width: 600px; height: 600px; position: absolute;"></div>
 	<div id="content" style="margin-left: 610px">
-		<h1>What's hot right now?</h1>
-		Hover over the markers in an area to see what's trending.
 	</div>
 </body>
 </html>  
