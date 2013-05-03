@@ -27,7 +27,7 @@
           this.foursquare = new Foursquare(apiKey, authUrl, apiUrl);
           this.selectedCategory = null;
           this.map = new L.Map('map')
-            .setView(new L.LatLng(30.675715404167743, -87.9345703125), 5);
+            .setView(new L.LatLng(8.537565350804018, -115.57617187499999), 14);
           var map = this.map;
           var https = (location.protocol === 'https:'),
                       base_https = 'https://dnv9my2eseobd.cloudfront.net/v3/',
