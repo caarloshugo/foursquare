@@ -81,6 +81,12 @@
               placeCount++;
               visitCount += this.history[i].beenHere;
               html.push('<a href="http://foursquare.com/venue/', entry['id'], '">', entry['name'], '</a> (' + this.history[i].beenHere + ' visits)<br>');
+              
+			  var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, 0] })})
+			  .bindPopup(entry['name'], { closeButton: false })
+			  .on('mouseover', function(e) { this.openPopup(); })
+			  .on('mouseout', function(e) { this.closePopup(); });
+			  this.map.addLayer(marker);
             }
             
           }
@@ -112,7 +118,7 @@
 			this.map.addLayer(marker);
           }
           
-          this.map.setZoom(13);
+          //this.map.setZoom(6);
         }
         
         
@@ -148,7 +154,6 @@
          */
         HistoryBrowse.prototype.onHistory = function(history) {
           this.history = history;
-          this.markers();
           this.buildCategoryList();
           this.draw();
         }
