@@ -106,7 +106,7 @@
             
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
 
-			var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, -25] })})
+			var marker = new L.Marker(latLng, {icon: L.icon({ iconUrl: 'images/marker-icon.png', iconSize: [25, 41], iconAnchor: [0, 0], popupAnchor: [0, 0] })})
 			  .bindPopup(entry['name'], { closeButton: false })
 			  .on('mouseover', function(e) { this.openPopup(); })
 			  .on('mouseout', function(e) { this.closePopup(); });
