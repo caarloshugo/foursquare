@@ -126,9 +126,9 @@
 			// Pass features and a custom factory function to the map
 			map.markerLayer.setGeoJSON(geoJson);
 			
-			map.markerLayer.bindPopup(entry['name'], { closeButton: false });
-			map.markerLayer.on('mouseover', function(e) { this.openPopup(); });
-			map.markerLayer.on('mouseout', function(e) { this.closePopup(); });
+			this.map.markerLayer.bindPopup(entry['name'], { closeButton: false });
+			this.map.markerLayer.on('mouseover', function(e) { this.openPopup(); });
+			this.map.markerLayer.on('mouseout', function(e) { this.closePopup(); });
 			
           }
         }
