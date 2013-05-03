@@ -74,7 +74,7 @@
           for (var i = 0; i < this.history.length; i++) {
             var entry = this.history[i]['venue'];
             
-            conosle.log(entry);
+            console.log(entry);
             var latLng = new L.LatLng(entry.location.lat, entry.location.lng);
             if (bounds.contains(latLng) && this.categoryMatch(entry.categories)) {
               placeCount++;
